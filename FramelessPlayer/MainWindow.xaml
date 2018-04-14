@@ -7,6 +7,8 @@
                       xmlns:wpf="clr-namespace:Meta.Vlc.Wpf;assembly=Meta.Vlc.Wpf"
                       xmlns:system="clr-namespace:System;assembly=mscorlib"
                       
+                      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                      
                       xmlns:local="clr-namespace:FramelessPlayer"
                       
                       Title="Frameless Player ▶"
@@ -83,30 +85,33 @@
 
                     <!-- Dark mode toggle -->
                     <Label Grid.Row="1">Dark mode</Label>
-                    <Controls:ToggleSwitch Name="DarkMode_Toggle"
-                                           IsChecked="True"
-                                           Click="DarkMode_Toggle_Click"
-                                           Grid.Row="1" Grid.Column="1"
-                                           BorderThickness="1">
-                    </Controls:ToggleSwitch>
+                    <ToggleButton Name="DarkMode_Toggle"
+                                  Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"
+                                  IsChecked="True"
+                                  Click="DarkMode_Toggle_Click"
+                                  Grid.Row="1" Grid.Column="1"
+                                  BorderThickness="1">
+                    </ToggleButton>
 
                     <!-- Keep on top toggle -->
                     <Label Grid.Row="2">Keep on top</Label>
-                    <Controls:ToggleSwitch Name="KeepOnTop_Toggle"
-                                           IsChecked="False"
-                                           Click="KeepOnTop_Toggle_Click"
-                                           Grid.Row="2" Grid.Column="1"
-                                           BorderThickness="1">
-                    </Controls:ToggleSwitch>
+                    <ToggleButton Name="KeepOnTop_Toggle"
+                                  Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"
+                                  IsChecked="False"
+                                  Click="KeepOnTop_Toggle_Click"
+                                  Grid.Row="2" Grid.Column="1"
+                                  BorderThickness="1">
+                    </ToggleButton>
 
                     <!-- Minify titlebar -->
                     <Label Grid.Row="3">Minify titlebar</Label>
-                    <Controls:ToggleSwitch Name="MinifyTitlebar_Toggle"
-                                           IsChecked="False"
-                                           Click="MinifyTitlebar_Toggle_Click"
-                                           Grid.Row="3" Grid.Column="1"
-                                           BorderThickness="1">
-                    </Controls:ToggleSwitch>
+                    <ToggleButton Name="MinifyTitlebar_Toggle"
+                                  Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"
+                                  IsChecked="False"
+                                  Click="MinifyTitlebar_Toggle_Click"
+                                  Grid.Row="3" Grid.Column="1"
+                                  BorderThickness="1">
+                    </ToggleButton>
 
                     <!-- Compact ptogress bar opacity -->
                     <Label Grid.Row="4">Compact progress bar opacity</Label>
@@ -323,21 +328,21 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="32"/>
-                <ColumnDefinition Width="32"/>
-                <ColumnDefinition Width="32"/>
+                <ColumnDefinition Width="42"/>
+                <ColumnDefinition Width="42"/>
+                <ColumnDefinition Width="42"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <StackPanel Orientation="Horizontal"
-                        Margin="5,-2,0,0" HorizontalAlignment="Left">
+                        Margin="5,-2,0,1" HorizontalAlignment="Left">
                 
                 <!-- Fullscreen -->
                 <Button Name="btnFullscreen"
                     Click="btnFullscreen_Click"
                     ToolTip="Fullscreen"
-                    Style="{DynamicResource MetroCircleButtonStyle}"
-                    Width="36" Height="36">
+                    Style="{DynamicResource MaterialDesignFloatingActionDarkButton}"
+                    Width="32" Height="32" Margin="0,0,4,0">
                     <iconPacks:PackIconMaterial Name="icoFullscreen" Kind="Fullscreen" />
                 </Button>
                 
@@ -345,44 +350,44 @@
                 <Button Name="btnPlaylist"
                     Click="btnPlaylist_Click"
                     ToolTip="Open playlist panel"
-                    Style="{DynamicResource MetroCircleButtonStyle}"
-                    Width="36" Height="36">
+                    Style="{DynamicResource MaterialDesignFloatingActionDarkButton}"
+                    Width="32" Height="32" Margin="0,0,4,0">
                     <iconPacks:PackIconMaterial Kind="ViewList" />
                 </Button>
                 
                 <!-- Tracks -->
                 <Button Name="btnTracks"
                         Click="btnTracks_Click"
-                    ToolTip="Open tracks selection panel"
-                    Style="{DynamicResource MetroCircleButtonStyle}"
-                    Width="36" Height="36">
+                        ToolTip="Open tracks selection panel"
+                        Style="{DynamicResource MaterialDesignFloatingActionDarkButton}"
+                        Width="32" Height="32">
                     <iconPacks:PackIconModern Kind="ListGear" />
                 </Button>
             </StackPanel>
 
             <!-- Main controls -->
             <Button Name="btnPlay"
+                    Style="{DynamicResource MaterialDesignFloatingActionDarkButton}"
                     Grid.Column="1" Click="Play_Click" 
                     ToolTip="Play"
-                    Style="{DynamicResource MetroCircleButtonStyle}"
                     Width="36" Height="36"
-                    Margin="-2,-2,0,0">
+                    Margin="-2,-8,0,0">
                 <iconPacks:PackIconMaterial Name="icoPlayPause" Kind="Play" />
             </Button>
 
             <Button Grid.Column="2" Click="Stop_Click"
                     ToolTip="Stop"
-                    Style="{DynamicResource MetroCircleButtonStyle}"
+                    Style="{DynamicResource MaterialDesignFloatingActionDarkButton}"
                     Width="36" Height="36"
-                    Margin="-2,-2,0,0">
+                    Margin="-2,-8,0,0">
                 <iconPacks:PackIconMaterial Kind="Stop" />
             </Button>
 
             <Button Grid.Column="3" Click="Load_Click"
                     ToolTip="Load file"
-                    Style="{DynamicResource MetroCircleButtonStyle}"
+                    Style="{DynamicResource MaterialDesignFloatingActionDarkButton}"
                     Width="36" Height="36"
-                    Margin="-2,-2,0,0">
+                    Margin="-2,-8,0,0">
                 <iconPacks:PackIconMaterial Kind="OpenInApp" />
             </Button>
 
@@ -394,7 +399,7 @@
                 <iconPacks:PackIconMaterial Name="Ico_Sound" Kind="VolumeOff" Width="30" Visibility="Visible"/>
                 
                 <Slider Name="VolumeSlider"
-                        Value="{Binding Volume, ElementName=Player}" 
+                        Value="{Binding Volume, ElementName=Player}"
                         Thumb.DragCompleted="VolumeSlider_DragCompleted"
                         Width="120"
                         Maximum="120"
